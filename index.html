@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0b7285">
+  <title>Dental Quest — Dental Detective</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <a class="brand" href="#" data-screen="home" aria-label="Dental Quest home">
+      <span class="brand-mark">🦷</span><span>DENTAL<span>QUEST</span></span>
+    </a>
+    <div class="hud" id="hud" hidden>
+      <span id="hudTeam">Team</span><b id="hudScore">0</b>
+      <button class="icon-btn" id="soundBtn" title="Toggle sound">🔊</button>
+      <button class="icon-btn" id="menuBtn" title="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="screen active">
+      <div class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">COMMUNITY DENTISTRY • INTERACTIVE LEARNING</div>
+          <h1>Become a <em>Dental Detective</em><br>and save the smile.</h1>
+          <p>A fast, team-based oral-health adventure created by BDS Community Dentistry students.</p>
+          <div class="hero-actions">
+            <button class="btn primary" id="startBtn">🚀 Start Quest</button>
+            <button class="btn ghost" id="howBtn">🎮 How to play</button>
+          </div>
+          <div class="trust-row"><span>✓ 5 missions</span><span>✓ Team scoring</span><span>✓ Classroom ready</span></div>
+        </div>
+        <div class="hero-art">
+          <div class="orb orb-a"></div><div class="orb orb-b"></div>
+          <div class="tooth-mascot">
+            <div class="tooth-face"><span class="eye">•</span><span class="eye">•</span><div class="smile">⌣</div></div>
+            <div class="coat"></div><div class="stethoscope">◯</div>
+          </div>
+          <div class="float-card card-one">🪥 <b>Brush smart</b></div>
+          <div class="float-card card-two">💧 <b>Choose water</b></div>
+          <div class="float-card card-three">🔎 <b>Find plaque</b></div>
+        </div>
+      </div>
+      <div class="section team-section">
+        <div class="section-head"><div><span class="eyebrow">YOUR DENTAL QUEST TEAM</span><h2>Meet the Dental Quest Team</h2></div><p>Guiding you through the mission.</p></div>
+        <div class="team-grid" id="teamGrid"></div>
+      </div>
+      <div class="section info-strip">
+        <div><span>01</span><b>Learn</b><small>Discover smart oral-health habits.</small></div>
+        <div><span>02</span><b>Play</b><small>Solve challenges with your team.</small></div>
+        <div><span>03</span><b>Win</b><small>Earn points, badges and bragging rights.</small></div>
+      </div>
+      <footer>Dental Quest • Community Dentistry School Visit</footer>
+    </section>
+
+    <section id="how" class="screen">
+      <div class="center-page">
+        <span class="eyebrow">HOW IT WORKS</span><h2>Think. Play. Learn. 🦷</h2>
+        <div class="how-grid">
+          <article><div class="big-icon">👥</div><h3>1. Choose a team</h3><p>Pick a dental team name and work together.</p></article>
+          <article><div class="big-icon">🎯</div><h3>2. Complete missions</h3><p>Five short challenges test your dental detective skills.</p></article>
+          <article><div class="big-icon">🏆</div><h3>3. Collect points</h3><p>Correct answers and completed missions boost your score.</p></article>
+        </div>
+        <button class="btn primary" id="howStart">🚀 Start Quest</button>
+      </div>
+    </section>
+
+    <section id="setup" class="screen">
+      <div class="center-page narrow">
+        <span class="eyebrow">MISSION BRIEFING</span><h2>Choose your Dental Detective team</h2>
+        <p class="muted">Work together. Read carefully. Your score is shared.</p>
+        <div class="team-choices" id="teamChoices"></div>
+        <label class="field-label" for="customTeam">Or enter a team name</label>
+        <input id="customTeam" class="text-input" maxlength="24" placeholder="e.g. Smile Squad">
+        <button class="btn primary wide" id="beginBtn">🚀 Begin Mission</button>
+      </div>
+    </section>
+
+    <section id="map" class="screen">
+      <div class="quest-head"><div><span class="eyebrow">DENTAL QUEST</span><h2>Mission Control</h2></div><div class="score-pill">⭐ <span id="mapScore">0</span> pts</div></div>
+      <div class="mission-map" id="missionMap"></div>
+    </section>
+
+    <section id="mission" class="screen">
+      <div class="mission-wrap">
+        <div class="mission-top"><button class="back-btn" id="backMap">← Missions</button><div class="progress"><span id="progressFill"></span></div><span id="missionCounter">01 / 05</span></div>
+        <div id="missionContent"></div>
+      </div>
+    </section>
+
+    <section id="results" class="screen">
+      <div class="results-card">
+        <div class="confetti" id="confetti"></div>
+        <span class="eyebrow">QUEST COMPLETE</span><div class="trophy">🏆</div>
+        <h2>Smile saved!</h2><p id="resultTeam"></p>
+        <div class="final-score"><small>FINAL SCORE</small><strong id="finalScore">0</strong><span>POINTS</span></div>
+        <div class="result-stats"><div><b id="resultMissions">5/5</b><small>Missions</small></div><div><b id="resultBadges">0</b><small>Badges</small></div></div>
+        <p class="result-message">Great teamwork! Keep the detective skills going: brush effectively with fluoride toothpaste, limit frequent sugary exposures, choose water regularly, and seek dental care when needed.</p>
+        <div class="hero-actions center"><button class="btn primary" id="leaderBtn">🏆 View leaderboard</button><button class="btn ghost" id="restartBtn">↻ Play again</button></div>
+      </div>
+    </section>
+
+    <section id="leaderboard" class="screen">
+      <div class="center-page">
+        <span class="eyebrow">CLASSROOM SCOREBOARD</span><h2>Dental Quest leaderboard</h2>
+        <div class="leader-card">
+          <div class="leader-head"><span>RANK</span><span>TEAM</span><span>SCORE</span><span>BADGE</span></div>
+          <div id="leaderRows"></div>
+        </div>
+        <div class="hero-actions center"><button class="btn primary" id="leaderHome">Back to home</button><button class="btn danger" id="resetLeaderboard">Reset leaderboard</button></div>
+      </div>
+    </section>
+
+    <section id="facilitator" class="screen">
+      <div class="center-page narrow">
+        <span class="eyebrow">FACILITATOR MODE</span><h2>Team control panel</h2>
+        <div class="control-grid">
+          <div><small>CURRENT TEAM</small><b id="facTeam">—</b></div><div><small>SCORE</small><b id="facScore">0</b></div><div><small>MISSION</small><b id="facMission">0 / 5</b></div>
+        </div>
+        <div class="fac-actions"><button class="btn ghost" id="facMap">Go to missions</button><button class="btn ghost" id="facReset">Reset current game</button><button class="btn danger" id="facLeaderReset">Reset leaderboard</button></div>
+        <p class="muted">Default PIN: 1234</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal" id="modal" hidden>
+    <div class="modal-box"><button class="modal-close" id="modalClose">×</button><div id="modalContent"></div></div>
+  </div>
+  <div class="toast" id="toast"></div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
